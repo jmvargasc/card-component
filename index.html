@@ -15,9 +15,19 @@
     <card-components></card-components>
 
     <script>
-        document.querySelector('card-components').items = [{name: 'Ricardo Gasca'}, {name: 'Andre Medina'}, {name: 'Daniel Flores'}];
-        document.querySelector('card-components').renderItem = (item) => {
-            return `${item.name} `;
+        document.querySelector('card-components').items = [
+            {
+                title: 'Ricardo',
+                imageUrl: 'https://axity.com/wp-content/uploads/2021/07/Asset-1@4x-3.png',
+                description: "esto es texto de prueba esto es texto de prueba esto es texto de prueba",
+            },
+        ];
+        document.querySelector('card-components').renderItem = (item, html) => {
+            return html`
+                ${item.imageUrl ? html`<img src="${item.imageUrl}" alt="${item.title}">` : ''}
+                <h3>${item.title}</h3>
+                <p>${item.description}</p>
+            `;
         };
     </script>
   

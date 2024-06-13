@@ -17,6 +17,7 @@ export class CardComponents extends LitElement {
         padding: 1rem;
         border-radius: 0.5rem;
         transition: background-color 0.3s;
+        overflow: hidden;
       }
       .card:hover {
         background-color: #4749d1;
@@ -56,10 +57,7 @@ export class CardComponents extends LitElement {
 
   constructor() {
     super();
-    this.items = [{
-      name: "nombre",
-      Description: "ndjscndo iancd oinvcoi dsonoidv nfovnfov nfoinvoi dnoincodsnoisd",
-    }];
+    this.items = [];
     this.renderItem = null;
 
     this.title = 'No title';
@@ -84,9 +82,9 @@ export class CardComponents extends LitElement {
       <div class="card-container">
         ${this.items.map(
           (item) => html`
-            <div class="card" id="card" @click="${() => this.onCardClick(item)}">
-              ${this.renderItem ? this.renderItem(item) : html``}
-            </div>
+            <div class="card" id="card" @click="${() => this.onCardClick(item)}">      
+              ${this.renderItem ? this.renderItem(item, html) : html``}
+            </div>            
           `
         )}
       </div>
@@ -103,7 +101,7 @@ export class CardComponents extends LitElement {
 
   firstUpdated() {
     this.shadowRoot.querySelector('#card').focus();
-    this.style.fontSize = "4rem";
+    this.style.fontSize = "1rem";
 
     console.log("first card");
 
